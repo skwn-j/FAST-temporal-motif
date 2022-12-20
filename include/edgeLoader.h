@@ -2,6 +2,7 @@
 #define EDGE_LOADER_H
 
 #include<iostream>
+#include<cstdio>
 #include<string>
 #include<vector>
 #include<string>
@@ -39,6 +40,46 @@ struct StarEdgeData {
         this->t = t_;
         this->nbr = nbr_;
         this->dir = dir_;
+    }
+};
+
+struct MotifLog {
+    int bts;
+    int ets;
+    int amount;
+
+    MotifLog(){}
+    MotifLog(int bts_, int ets_)
+    {
+        this->bts = bts_;
+        this->ets = ets_;
+        this->amount = 0;
+    }
+    MotifLog(int bts_, int ets_, int amount_)
+    {
+        this->bts = bts_;
+        this->ets = ets_;
+        this->amount = amount_;
+    }
+    string getBegin() {
+        return to_string(bts);
+    }
+    string getAmount() {
+        return to_string(amount);
+    }
+    string getDuration() {
+        return to_string(ets-bts);
+    }
+    string getBeginDuration() {
+        return to_string(bts) + ", "+to_string(ets-bts);
+    }
+    string toString()
+    {
+        return to_string(bts) + ", " + to_string(ets-bts) + ", " + to_string(amount)+"\n";
+    }
+
+    bool operator==(MotifLog a) {
+        return bts == a.bts && ets == a.ets;
     }
 };
 

@@ -3,6 +3,7 @@
 
 void getMartix(int pairNum[2][2][2], int starNum[3][2][2][2], int triedNum[3][2][2][2], int martix[6][6])
 {
+    // because tow pairNums are isomorphic, so we only need to calculate one of them
     martix[5][4] = (pairNum[0][1][0] + pairNum[1][0][1]) / 2;
     martix[4][5] = (pairNum[0][1][1] + pairNum[1][0][0]) / 2;
     martix[4][4] = (pairNum[0][0][0] + pairNum[1][1][1]) / 2;

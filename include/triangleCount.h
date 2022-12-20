@@ -13,4 +13,7 @@ void countTriedNum(vector<StarEdgeData>& edges, vector<bool>& counted, int allTr
 void countTriedNum_parallel(vector<StarEdgeData>& edges, int allTriedNum[3][2][2][2], int timeWindow);
 /* for nodes with degree >= thrd, use inner parallel method*/
 void countTriedNum_innerParallel(vector<StarEdgeData>& edges, int allTriedNum[3][2][2][2], int timeWindow);
+
+void triedMatrixIndex(int i, int j, int k, int l, int _tempSum[6][6]);
+
 #endif // TRIANGLE_COUNT_H
