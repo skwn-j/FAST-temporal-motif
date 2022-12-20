@@ -12,7 +12,7 @@ map<string, string> args;
 
 bool motifCmp(MotifLog a, MotifLog b) {
     if(a.bts == b.bts) {
-        return a.ets < b.ets;
+        return a.ets > b.ets;
     }
     else {
         return a.bts < b.bts;
@@ -200,6 +200,7 @@ int main(int argc, char **argv)
     outfile.close();
 
     int checkMotif[6][6] = {0};
+    int motifIndexes[6][6] = {0};
     for(int i=0;i<6;i++)
     {
         for(int j=0;j<6;j++)
