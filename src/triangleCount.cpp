@@ -7,15 +7,14 @@ using namespace std;
 void triedMatrixIndex(int i, int j, int k, int l, int _tempSum[4][2]) {
     /*
         triedNum matrix index list
-        martix[2][5] = triedNum[2][0][0][0] + triedNum[0][1][0][1] + triedNum[1][1][1][1]s;
-        martix[3][5] = triedNum[2][0][0][1] + triedNum[0][1][1][1] + triedNum[1][1][0][1]s;
-        martix[0][5] = triedNum[2][0][1][0] + triedNum[0][0][0][1] + triedNum[1][1][1][0]s;
-        martix[1][5] = triedNum[2][0][1][1] + triedNum[0][0][1][1] + triedNum[1][1][0][0]s;
-        martix[1][4] = triedNum[1][0][1][1]s + triedNum[0][1][0][0] + triedNum[2][1][0][0];
-        martix[3][4] = triedNum[1][0][0][1]s+ triedNum[0][1][1][0] + triedNum[2][1][0][1];
-        martix[0][4] = triedNum[1][0][1][0]s+ triedNum[0][0][0][0] + triedNum[2][1][1][0];
-        martix[2][4] = triedNum[1][0][0][0]s + triedNum[0][0][1][0] + triedNum[2][1][1][1];
-
+        tempSum[0][0] = triedNum[1][0][1][0] + triedNum[0][0][0][0] + triedNum[2][1][1][0];
+        tempSum[0][1] = triedNum[2][0][1][0] + triedNum[0][0][0][1] + triedNum[1][1][1][0];
+        tempSum[1][0] = triedNum[1][0][1][1] + triedNum[0][1][0][0] + triedNum[2][1][0][0];
+        tempSum[1][1] = triedNum[2][0][1][1] + triedNum[0][0][1][1] + triedNum[1][1][0][0];
+        tempSum[2][0] = triedNum[1][0][0][0] + triedNum[0][0][1][0] + triedNum[2][1][1][1];
+        tempSum[2][1] = triedNum[2][0][0][0] + triedNum[0][1][0][1] + triedNum[1][1][1][1];
+        tempSum[3][0] = triedNum[1][0][0][1] + triedNum[0][1][1][0] + triedNum[2][1][0][1];
+        tempSum[3][1] = triedNum[2][0][0][1] + triedNum[0][1][1][1] + triedNum[1][1][0][1];     
     */
     if(i==1 && j==0 && k==1 && l==0) ++_tempSum[0][0];
     if(i==1 && j==1 && k==1 && l==0) ++_tempSum[0][1];
@@ -48,6 +47,44 @@ void triedMatrixIndex(int i, int j, int k, int l, int _tempSum[4][2]) {
     
 }
 
+vector<MotifLog>* triedMotifIndex(int i, int j, int k, int l) {
+    /*
+        triedNum matrix index list
+        motifPointers[0][4] = triedNum[1][0][1][0] + triedNum[0][0][0][0] + triedNum[2][1][1][0];
+        motifPointers[0][5] = triedNum[2][0][1][0] + triedNum[0][0][0][1] + triedNum[1][1][1][0];
+        motifPointers[1][4] = triedNum[1][0][1][1] + triedNum[0][1][0][0] + triedNum[2][1][0][0];
+        motifPointers[1][5] = triedNum[2][0][1][1] + triedNum[0][0][1][1] + triedNum[1][1][0][0];
+        motifPointers[2][4] = triedNum[1][0][0][0] + triedNum[0][0][1][0] + triedNum[2][1][1][1];
+        motifPointers[2][5] = triedNum[2][0][0][0] + triedNum[0][1][0][1] + triedNum[1][1][1][1];
+        motifPointers[3][4] = triedNum[1][0][0][1] + triedNum[0][1][1][0] + triedNum[2][1][0][1];
+        motifPointers[3][5] = triedNum[2][0][0][1] + triedNum[0][1][1][1] + triedNum[1][1][0][1];     
+    */
+    if(i==1 && j==0 && k==1 && l==0) return motifPointers[0][4];
+    if(i==0 && j==0 && k==0 && l==0) return motifPointers[0][4];
+    if(i==2 && j==1 && k==1 && l==0) return motifPointers[0][4];
+    if(i==2 && j==0 && k==1 && l==0) return motifPointers[0][5];
+    if(i==0 && j==0 && k==0 && l==1) return motifPointers[0][5];
+    if(i==1 && j==1 && k==1 && l==0) return motifPointers[0][5];
+    if(i==1 && j==0 && k==1 && l==1) return motifPointers[1][4];
+    if(i==0 && j==1 && k==0 && l==0) return motifPointers[1][4];
+    if(i==2 && j==1 && k==0 && l==0) return motifPointers[1][4];
+    if(i==2 && j==0 && k==1 && l==1) return motifPointers[1][5];
+    if(i==0 && j==0 && k==1 && l==1) return motifPointers[1][5];
+    if(i==1 && j==1 && k==0 && l==0) return motifPointers[1][5];
+    if(i==1 && j==0 && k==0 && l==0) return motifPointers[2][4];
+    if(i==0 && j==0 && k==1 && l==0) return motifPointers[2][4];
+    if(i==2 && j==1 && k==1 && l==1) return motifPointers[2][4];
+    if(i==2 && j==0 && k==0 && l==0) return motifPointers[2][5];
+    if(i==0 && j==1 && k==0 && l==1) return motifPointers[2][5];
+    if(i==1 && j==1 && k==1 && l==1) return motifPointers[2][5];
+    if(i==1 && j==0 && k==0 && l==1) return motifPointers[3][4];
+    if(i==0 && j==1 && k==1 && l==0) return motifPointers[3][4];
+    if(i==2 && j==1 && k==0 && l==1) return motifPointers[3][4];
+    if(i==2 && j==0 && k==0 && l==1) return motifPointers[3][5];
+    if(i==0 && j==1 && k==1 && l==1) return motifPointers[3][5];
+    if(i==1 && j==1 && k==0 && l==1) return motifPointers[3][5];
+}
+
 void countTriedNum(vector<StarEdgeData>& edges, vector<bool>& counted, int allTriedNum[3][2][2][2], int timeWindow)
 {
     int len = edges.size();
@@ -77,6 +114,7 @@ void countTriedNum(vector<StarEdgeData>& edges, vector<bool>& counted, int allTr
                     {
                         ++triedNum[0][line1_dir][line2_dir][0];
                         //triedMatrixIndex(0, line1_dir, line2_dir, 0, _tempSum);
+                        //motifPointers[k][l+4]->emplace_back(MotifLog(line1_t, line2_t, _tempSum[k][l]))
                     }
                     else if(t>=line1_t&&t<=line2_t)  // line1_t < t < line2
                     {
